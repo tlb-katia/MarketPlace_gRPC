@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package market_place;
+
+option go_package = "katia.market_place.v1;market_placev1";
+
+service ProductCatalog {
+  rpc AddProduct (Product) returns (ProductResponse);
+  rpc UpdateProduct (Product) returns (ProductResponse);
+  rpc DeleteProduct (ProductId) returns (DeleteResponse);
+  rpc GetProduct (ProductId) returns (Product);
+}
+
+message Product {
+  string id = 1;
+  string name = 2;
+  string category = 3;
+  float price = 4;
+  float rating = 5;
+}
+
+message ProductId {
+  string id = 1;
+}
+
+message ProductResponse {
+  string status = 1;
+  string message = 2;
+}
+
+message DeleteResponse {
+  string status = 1;
+  string message = 2;
+}
